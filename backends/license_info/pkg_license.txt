@@ -1,0 +1,1 @@
+{"array": "None", "nltk": "Apache License 2.0", "BeautifulSoup": "MIT License", "lxml": "BSD License", "matplotlib": "PSF License", "os": "None", "requests": "MIT License", "numpy": "BSD License", "sklearn": "MIT License", "scipy": "BSD License", "scrapy": "BSD License", "sys": "None", "time": "None", "math": "None", "json": "None"}

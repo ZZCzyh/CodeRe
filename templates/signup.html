@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Signup</title>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Custom Theme files -->
+<link href="../static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="../static/css/resultstyle.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="../static/css/flexslider.css" type="text/css" media="screen" />
+<link type="text/css" rel="stylesheet" href="../static/css/JFFormStyle-1.css" />
+<link href="../static/css/indexstyle.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- js -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/modernizr.custom.js"></script>
+<script defer src="../static/js/jquery.flexslider.js"></script>
+	<script src="../static/js/easyResponsiveTabs.js" type="text/javascript"></script>
+	<script src="../static/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="../static/js/script.js"></script>
+<!-- //js -->
+<!-- fonts -->
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- //fonts -->	
+<script type="text/javascript">
+		$(document).ready(function () {
+			$('#horizontalTab').easyResponsiveTabs({
+				type: 'default', //Types: default, vertical, accordion           
+				width: 'auto', //auto or any width like 600px
+				fit: true   // 100% fit in a container
+			});
+		});
+	</script>
+<!--pop-up-->
+<script src="../static/js/menu_jquery.js"></script>
+<!--//pop-up-->	
+</head>
+<body>
+	<!--header-->
+	<div class="header">
+		<div class="container">
+			<div class="header-grids">
+				<div class="logo">
+					
+				</div>
+				<!--navbar-header-->
+				<div class="header-dropdown">
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="nav-top">
+				<div class="top-nav">
+					<span class="menu"><img src="../static/images/menu.png" alt="" /></span>
+					<ul class="nav1">
+						<li><a href="../index">Home</a></li>
+						<li><a href="../about">About us</a></li>
+					</ul>
+					<div class="clearfix"> </div>
+					<!-- script-for-menu -->
+							 <script> 
+							   $( "span.menu" ).click(function() {
+								 $( "ul.nav1" ).slideToggle( 300, function() {
+								 // Animation complete.
+								  });
+								 });
+							
+							</script>
+						<!-- /script-for-menu -->
+				</div>
+				<div class="dropdown-grids">
+						<div id="loginContainer"><a href="#" id="loginButton"><span>Login</span></a>
+							<div id="loginBox">                
+								<form id="loginForm">
+									<div class="login-grids">
+										<div class="login-grid-left">
+											<fieldset id="body">
+												<fieldset>
+													<label for="email">User Name</label>
+													<input type="text" name="username" id="username">
+												</fieldset>
+												<fieldset>
+													<label for="password">Password</label>
+													<input type="password" name="password" id="password">
+												</fieldset>
+												<input type="submit" id="login" value="Sign in">
+												<label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
+											</fieldset>
+											<span><a href="#">Forgot your password?</a></span>
+											<div class="or-grid">
+												<p>OR</p>
+											</div>
+											<div class="social-sits">
+												<div class="button-bottom">
+													<p>New account? <a href="../signup">Signup</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//header-->
+	<!-- banner-bottom -->
+	<div class="banner-bottom">
+		<!-- container -->
+		<div class="container">
+			<div class="faqs-top-grids">
+				<div class="book-grids">
+					<div class="col-md-6 book-left">
+						<div class="book-left-info">
+							<h3>Create Your Account</h3>
+						</div>
+						<div class="book-left-form">
+							<form>
+								<p>User Name</p>
+								<!--<input type="text" value="" id="reg_username" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">-->
+                                <input type="text" name="reg_username" id="reg_username">
+								<p>Password</p>
+								<input type="password" name="reg_password" id="reg_password">
+								<p>Confirm Password</p>
+								<input type="password" name="password" id="password">
+								<label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
+								<input type="submit" id="login" value="Register" onclick="return per_regist()">
+							</form>
+						</div>
+					<!/div>
+					<!-- <div class="col-md-6 book-left book-right">
+						<div class="book-left-info">
+							<h3>Recommended</h3>
+						</div>
+						<div class="book-left-bottom">
+							<div class="book-left-facebook">
+								<a href="#">Connect with Facebook</a>
+							</div>
+							<div class="book-left-chrome">
+								<a href="#">Connect with Google</a>
+							</div>
+						</div>
+						<ul>
+							<li>Access booking history with upcoming trips</li>
+							<li>Print tickets and invoices</li>
+							<li>Make checkouts simpler</li>
+							<li>Enter your contact details only once</li>
+							<li>Get alerts for low fares</li>
+						</ul>
+					</div> -->
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<!-- //container -->
+	</div>
+	<!-- //banner-bottom -->
+
+	<table cellpadding="0" cellspacing="0" border="0" bgcolor="#dcdcdc" width="100%">
+
+                    <!--<table id="mm" border="1" >-->
+        <tbody id="tranxList"></tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+        function per_regist() {
+            $.ajax({
+                type: 'post',
+                url: '/signup/',
+                data:{
+                    reg_username:document.getElementById('reg_username').value,
+                    reg_password:document.getElementById('reg_password').value,
+                },
+                success: function (data) {
+                    if(data == '0'){
+                        alert("注册成功")
+                        location.href='/result/'
+                    }else if(data=='1'){
+                        alert("用户名重复")
+                    }
+                },
+                error: function () {
+                    alert('错误！')
+                }
+            })
+        }
+    </script>
+</body>
+</html>

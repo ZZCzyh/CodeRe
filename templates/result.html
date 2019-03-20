@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Safe open source code search</title>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Custom Theme files -->
+<link href="../static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="../static/css/resultstyle.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="../static/css/flexslider.css" type="text/css" media="screen" />
+<link type="text/css" rel="stylesheet" href="../static/css/JFFormStyle-1.css" />
+<link href="../static/css/indexstyle.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- js -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/modernizr.custom.js"></script>
+<!-- //js -->
+<!-- fonts -->
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- //fonts -->	
+<script type="text/javascript">
+		$(document).ready(function () {
+			$('#horizontalTab').easyResponsiveTabs({
+				type: 'default', //Types: default, vertical, accordion           
+				width: 'auto', //auto or any width like 600px
+				fit: true   // 100% fit in a container
+			});
+		});
+	</script>
+<!--pop-up-->
+<script src="../static/js/menu_jquery.js"></script>
+<script defer src="../static/js/jquery.flexslider.js"></script>
+	<script src="../static/js/easyResponsiveTabs.js" type="text/javascript"></script>
+	<script src="../static/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="../static/js/script.js"></script>
+<!--//pop-up-->
+    <script>
+        function orgTranxTable() {
+                        $.ajax({
+                            type: 'post',
+                            url: '/result/',
+                            success: function (jsonData) {
+                                for(var i=0;i<jsonData["re"].length;i++){
+                                    $("#"+i).html(jsonData["re"][i]['name']);
+                                    $("#"+i+"a").html(jsonData["re"][i]['synopsis']);
+                                    $("#"+i+"b").html(jsonData["re"][i]['license']);
+                                    if(jsonData["re"][i]['valid']) {
+                                        $("#" + i + "d").html("该许可证不冲突");
+                                    }else $("#" + i + "d").html("该许可证冲突");
+                                    document.getElementById(i+"c").value=jsonData["re"][i]['name'];
+                                }
+                            },
+                            error: function () {
+                                alert('错误！')
+                            }
+
+                        })
+                    }
+                    orgTranxTable();
+        function foo(id) {
+            $.ajax({
+                type: 'post',
+                url: '/single/',
+                data:{
+                    name:document.getElementById(id).value
+                },
+                success: function () {
+                    location.href='/single/';
+                },
+                error: function () {
+                    alert('错误！')
+                }
+            })
+        }
+        function per_login() {
+            $.ajax({
+                type: 'post',
+                url: '/login/',
+                data:{
+                    username:document.getElementById('username').value,
+                    password:document.getElementById('password').value,
+                },
+                success: function (data) {
+                    if(data == '0'){
+                        alert("登陆成功")
+                    }else if(data=='1'){
+                        alert("密码错误")
+                    }else alert("账户不存在")
+                },
+                error: function () {
+                    alert('错误！')
+                }
+            })
+        }
+    </script>
+
+</head>
+<body>
+	<!--header-->
+	<div class="header">
+		<div class="container">
+			<div class="header-grids">
+				<div class="logo">
+				</div>
+				<!--navbar-header-->
+				<div class="header-dropdown">
+					<!--div class="emergency-grid"-->
+					<!--/div-->
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="nav-top">
+				<div class="top-nav">
+{#					<span class="menu"><img src="../static/images/menu.png" alt="" /></span>#}
+					<ul class="nav1">
+						<li><a href="../index">Home</a></li>
+						<li><a href="../about">About us</a></li>
+					</ul>
+					<div class="clearfix"> </div>
+					<!-- script-for-menu -->
+							 <script> 
+							   $( "span.menu" ).click(function() {
+								 $( "ul.nav1" ).slideToggle( 300, function() {
+								 // Animation complete.
+								  });
+								 });
+							
+							</script>
+						<!-- /script-for-menu -->
+				</div>
+				<div class="dropdown-grids">
+						<div id="loginContainer"><a href="#" id="loginButton"><span>Login</span></a>
+							<div id="loginBox">                
+								<form id="loginForm">
+									<div class="login-grids">
+										<div class="login-grid-left">
+											<fieldset id="body">
+												<fieldset>
+													<label for="email">User Name</label>
+													<input type="text" name="username" id="username">
+												</fieldset>
+												<fieldset>
+													<label for="password">Password</label>
+													<input type="password" name="password" id="password">
+												</fieldset>
+												<input type="submit" id="login" value="Sign in" onclick="return per_login()">
+												<label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
+											</fieldset>
+											<span><a href="#">Forgot your password?</a></span>
+											<div class="or-grid">
+												<p>OR</p>
+											</div>
+											<div class="social-sits">
+												<div class="button-bottom">
+													<p>New account? <a href="../signup">Signup</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//header-->
+	<!-- banner-bottom -->
+	<div class="banner-bottom">
+		<!-- container -->
+		<div class="container">
+			<div class="c-rooms">
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="0" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="0a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="0b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="0d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="0c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="1" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="1a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="1b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="1d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="1c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="2" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="2a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="2b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="2d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="2c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="3" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="3a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="3b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="3d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="3c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="4" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="4a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="4b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="4d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="4c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="5" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="5a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="5b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="5d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="5c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="6" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="6a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="6b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="6d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="6c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="7" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="7a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="7b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="7d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="7c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="8" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="8a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="8b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="8d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="8c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="9" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="9a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="9b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="9d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="9c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="10" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="10a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="10b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="10d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="10c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="11" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="11a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="11b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="11d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="11c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="12" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="12a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="12b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="12d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="12c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="13" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="13a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="13b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="13d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="13c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="p-table">
+					<div class="p-table-grids">
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>接口名称</h6>
+							</div>
+							<div class="p-table-grid-info">
+								<div class="room-basic-info">
+                                    <div>
+                                        <p  id="14" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>功能描述</h6>
+							</div>
+							<div class="rate-features">
+								<ul>
+									<li id="14a" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>许可证</h6>
+							</div>
+							<div class="avg-rate">
+								<p id="14b" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+								<p id="14d" style="word-wrap: break-word;font-size: 18px;font-weight: bold"></p>
+							</div>
+						</div>
+						<div class="col-md-3 p-table-grid">
+							<div class="p-table-grad-heading">
+								<h6>详细描述</h6>
+							</div>
+							<div class="avg-rate">
+								<button class="btn btn-block btn-info" id="14c" style="width:100px; " onclick="return foo(id)">Link</button>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //container -->
+	</div>
+	<!-- //banner-bottom -->
+
+	
+
+</body>
+</html>
